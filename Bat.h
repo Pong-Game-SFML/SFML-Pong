@@ -1,6 +1,6 @@
 #pragma once
-#include "Header.h"
 #include <SFML/Graphics.hpp>
+#include "cBall.h"
 using namespace sf;
 class Bat
 {
@@ -23,5 +23,7 @@ public:
 	void moveDown(int Bot);
 
 	void update();
+
+	void autoMove(int Top, int Bot, cBall ball);
 };
 

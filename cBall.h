@@ -1,5 +1,4 @@
 #pragma once
-#include "cPaddle.h"
 #include <SFML/Graphics.hpp>
 using namespace sf;
 
@@ -14,7 +13,7 @@ public:
 	cBall(float initX, float initY); //constructor
 
 	//lay cac thong so private cua class
-	FloatRect getPosition(); 
+	FloatRect getPosition();
 	CircleShape getShape();
 	float getvx();
 	float getvy();
@@ -26,6 +25,6 @@ public:
 
 	void updatePosition(); //cap nhat lai vi tri cua ball
 
-	void move(int WIDTH, int HEIGHT);
+	void move(int WIDTH, int HEIGH);
 };
 

@@ -1,5 +1,4 @@
 #include "cBall.h"
-
 cBall::cBall(float initX, float initY)
 {
 	position.x = initX;
@@ -37,7 +36,7 @@ void cBall::hitSides()
 void cBall::hitPaddles()
 {
 	vx = -vx; //chuyen huong vx
-	position.x = position.x - (vx * 30); //cho do nay qua bong len 30 frame
+	position.x = position.x + vx; //cho do nay qua bong len 30 frame
 }
 
 void cBall::hitTopOrBottom()
@@ -75,5 +74,6 @@ void cBall::move(int WIDTH, int HEIGHT)
 	{
 		hitTopOrBottom();
 	}
-	
+	// Truong hop hung duoc ball
+
 }
