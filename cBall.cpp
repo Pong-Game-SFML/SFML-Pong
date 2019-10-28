@@ -1,4 +1,5 @@
 #include "cBall.h"
+
 cBall::cBall(float initX, float initY)
 {
 	position.x = initX;
@@ -36,7 +37,7 @@ void cBall::hitSides()
 void cBall::hitPaddles()
 {
 	vx = -vx; //chuyen huong vx
-	position.x = position.x + vx; //cho do nay qua bong len 30 frame
+	//position.x = position.x - (vx * 30); //cho do nay qua bong len 30 frame
 }
 
 void cBall::hitTopOrBottom()
@@ -53,7 +54,7 @@ void cBall::updatePosition()
 	ballShape.setPosition(position);
 }
 
-void cBall::move(int WIDTH, int HEIGHT)
+void cBall::move(int WIDTH, int HEIGHT, cPaddle paddle1, cPaddle paddle2)
 {
 	//Truong hop ball cham sides
 	if (getPosition().top < 0)
@@ -74,6 +75,17 @@ void cBall::move(int WIDTH, int HEIGHT)
 	{
 		hitTopOrBottom();
 	}
-	// Truong hop hung duoc ball
 
+	//Truong hop ball cham paddle 1
+	if (getPosition().intersects(paddle1.getPosition()))
+	{
+		hitPaddles();
+	}
+
+	//Truong hop ball cham paddle 2
+	if (getPosition().intersects(paddle2.getPosition()))
+	{
+		hitPaddles();
+	}
+	
 }

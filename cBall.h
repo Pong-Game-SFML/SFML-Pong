@@ -1,19 +1,24 @@
 #pragma once
+#ifndef CBALL_H
+#define CBALL_H
+#include "cPaddle.h"
 #include <SFML/Graphics.hpp>
 using namespace sf;
+
+class cPaddle;
 
 class cBall
 {
 private:
 	Vector2f position; //vi tri cua ball
 	CircleShape ballShape; //ve ball co dang hinh tron
-	float vx = .2f; //van toc theo chieu x
-	float vy = .2f; //van toc theo chieu y
+	float vx = -.2f; //van toc theo chieu x
+	float vy = -.2f; //van toc theo chieu y
 public:
 	cBall(float initX, float initY); //constructor
 
 	//lay cac thong so private cua class
-	FloatRect getPosition();
+	FloatRect getPosition(); 
 	CircleShape getShape();
 	float getvx();
 	float getvy();
@@ -25,6 +30,7 @@ public:
 
 	void updatePosition(); //cap nhat lai vi tri cua ball
 
-	void move(int WIDTH, int HEIGH);
+	void move(int WIDTH, int HEIGHT, cPaddle paddle1, cPaddle paddle2 );
 };
 
+#endif CBALL_H
