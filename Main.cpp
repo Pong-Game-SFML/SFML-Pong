@@ -1,7 +1,6 @@
-#include "Header.h"
 #include "cBall.h"
+#include "cPaddle.h"
 #include <SFML/Graphics.hpp>
-
 using namespace sf;
 
 int main()
@@ -9,9 +8,11 @@ int main()
 	int WIDTH = 1000;
 	int HEIGHT = 800;
 	cBall ball(550, 400);
+	cPaddle paddle1(10, HEIGHT / 2);
+	cPaddle paddle2(WIDTH - 20, HEIGHT / 2);
 	Event event;
-	Bat paddle1(10, HEIGHT / 2);
-	Bat paddle2(WIDTH - 20, HEIGHT / 2);
+
+
 	RenderWindow window(VideoMode(WIDTH, HEIGHT), "Ping Pong Game");
 
 	while (window.isOpen())
@@ -23,6 +24,7 @@ int main()
 				window.close(); //neu bam dau tat tren man hinh thi cua so tat
 			}
 		}
+
 		if (Keyboard::isKeyPressed(Keyboard::Up))
 		{
 			// move up...
@@ -49,8 +51,10 @@ int main()
 			// move up
 			paddle2.moveDown(HEIGHT);
 		}
-		//ball.move(WIDTH, HEIGHT);
+
+		ball.move(WIDTH, HEIGHT, paddle1, paddle2);
 		paddle1.autoMove(0, HEIGHT, ball);
+		paddle2.autoMove(0, HEIGHT, ball);
 		ball.updatePosition();
 		paddle1.update();
 		paddle2.update();
