@@ -1,64 +1,77 @@
-#include "Header.h"
-#include "cBall.h"
+#include <sstream>
+#include <cstdlib>
+#include <iostream>
+using namespace std;
 #include <SFML/Graphics.hpp>
-
 using namespace sf;
+#include "Menu.h"
 
+// This is where our game starts from
 int main()
 {
-	int WIDTH = 1000;
-	int HEIGHT = 800;
-	cBall ball(550, 400);
-	Event event;
-	Bat paddle1(10, HEIGHT / 2);
-	Bat paddle2(WIDTH - 20, HEIGHT / 2);
-	RenderWindow window(VideoMode(WIDTH, HEIGHT), "Ping Pong Game");
+	int windowW = 1024;
+	int windowHeight = 768;
+	
+	RenderWindow window(VideoMode(windowW, windowHeight), "Pong");
 
+	Texture texture;
+	texture.loadFromFile("39607.jpg");
+	Sprite sprite(texture);
+	Font font;
+	font.loadFromFile("simson.ttf");
+
+	// Set the font to our message
+	Text hud("PING PONG GAME", font);
+
+	hud.setPosition(180, 200);
+	//hud.setFont(font);
+	hud.setCharacterSize(90);
+	hud.setFillColor(sf::Color(26, 58, 245, 255));
+	Menu menu(windowW, windowHeight);
+
+	Event event;
 	while (window.isOpen())
 	{
+
 		while (window.pollEvent(event))
 		{
-			if (event.type == Event::Closed)
+			switch (event.type)
 			{
-				window.close(); //neu bam dau tat tren man hinh thi cua so tat
+			case Event::Closed:
+				window.close();
+				break;
+			case Event::KeyReleased:
+				switch (event.key.code)
+				{
+				case Keyboard::Up:
+					menu.moveUp();
+					break;
+				case Keyboard::Down:
+					menu.moveDown();
+					break;
+				case Keyboard::Return:
+					switch (menu.getChoose())
+					{
+					case 0:
+						cout << "Play buttons" << endl;
+						break;
+					case 1:
+						cout << "Options buttons" << endl;
+						break;
+					case 2:
+						window.close();
+						break;
+					}
+				}
+				break;
 			}
+			
 		}
-		if (Keyboard::isKeyPressed(Keyboard::Up))
-		{
-			// move up...
-			paddle2.moveUp(0);
-		}
-		else if (Keyboard::isKeyPressed(Keyboard::Down))
-		{
-			// move down...
-			paddle2.moveDown(HEIGHT);
-		}
-		else if (Keyboard::isKeyPressed(sf::Keyboard::Escape))
-		{
-			// quit...
-			// Someone closed the window- bye
-			window.close();
-		}
-		else if (Keyboard::isKeyPressed(sf::Keyboard::W))
-		{
-			// move up
-			paddle1.moveUp(0);
-		}
-		else if (Keyboard::isKeyPressed(sf::Keyboard::S))
-		{
-			// move up
-			paddle1.moveDown(HEIGHT);
-		}
-		ball.move(WIDTH, HEIGHT, paddle1, paddle2);
-		paddle1.autoMove(0, HEIGHT, ball);
-		ball.updatePosition();
-		paddle1.update();
-		paddle2.update();
-		window.clear(Color(26, 128, 182, 255));
-		window.draw(paddle1.getShape());
-		window.draw(paddle2.getShape());
-		window.draw(ball.getShape());
+		window.draw(sprite);
+		menu.draw(window);
+		window.draw(hud);
 		window.display();
+
 	}
 
 	return 0;
