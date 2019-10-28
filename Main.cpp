@@ -26,12 +26,12 @@ int main()
 		if (Keyboard::isKeyPressed(Keyboard::Up))
 		{
 			// move up...
-			paddle1.moveUp(0);
+			paddle2.moveUp(0);
 		}
 		else if (Keyboard::isKeyPressed(Keyboard::Down))
 		{
 			// move down...
-			paddle1.moveDown(HEIGHT);
+			paddle2.moveDown(HEIGHT);
 		}
 		else if (Keyboard::isKeyPressed(sf::Keyboard::Escape))
 		{
@@ -42,14 +42,14 @@ int main()
 		else if (Keyboard::isKeyPressed(sf::Keyboard::W))
 		{
 			// move up
-			paddle2.moveUp(0);
+			paddle1.moveUp(0);
 		}
 		else if (Keyboard::isKeyPressed(sf::Keyboard::S))
 		{
 			// move up
-			paddle2.moveDown(HEIGHT);
+			paddle1.moveDown(HEIGHT);
 		}
-		//ball.move(WIDTH, HEIGHT);
+		ball.move(WIDTH, HEIGHT, paddle1, paddle2);
 		paddle1.autoMove(0, HEIGHT, ball);
 		ball.updatePosition();
 		paddle1.update();
