@@ -2,6 +2,7 @@
 #include "Header.h"
 #include <SFML/Graphics.hpp>
 using namespace sf;
+class cBall;
 class Bat
 {
 	Vector2f position;
@@ -23,5 +24,6 @@ public:
 	void moveDown(int Bot);
 
 	void update();
-};
 
+	void autoMove(int Top, int Bot, cBall ball);
+};

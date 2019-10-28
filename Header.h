@@ -3,5 +3,8 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <conio.h>
+#include "cBall.h"
 #include "Bat.h"
+#include "cWindow.h"
+#include "Menu.h"
 #endif
