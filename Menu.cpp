@@ -1,42 +1,42 @@
 #include "Menu.h"
 
-Menu::Menu(int width, int height)
+Menu::Menu()
 {
 	font.loadFromFile("Leoscar Sans Serif.ttf");
 
 	text[0].setFont(font);
-	text[0].setPosition(510, 380);
+	text[0].setPosition(425, 355);
 	text[0].setCharacterSize(40);
 	text[0].setFillColor(Color::Green);
-	text[0].setString("PLAY");
+	text[0].setString("2 PLAYERS");
 
 	text[1].setFont(font);
-	text[1].setPosition(480, 450);
+	text[1].setPosition(445, 433);
 	text[1].setCharacterSize(40);
 	text[1].setFillColor(Color::White);
-	text[1].setString("OPTIONS");
+	text[1].setString("1 PLAYER");
 
 	text[2].setFont(font);
-	text[2].setPosition(520, 520);
+	text[2].setPosition(485, 515);
 	text[2].setCharacterSize(40);
 	text[2].setFillColor(Color::White);
 	text[2].setString("EXIT");
 
-	box[0].setPosition(450, 380);
+	box[0].setPosition(400, 350);
 	box[0].setFillColor(Color::Transparent);
-	box[0].setSize(Vector2f(200, 45));
+	box[0].setSize(Vector2f(230, 55));
 	box[0].setOutlineColor(Color::Green);
 	box[0].setOutlineThickness(5);
 
-	box[1].setPosition(450, 450);
+	box[1].setPosition(400, 430);
 	box[1].setFillColor(Color::Transparent);
-	box[1].setSize(Vector2f(200, 45));
+	box[1].setSize(Vector2f(230, 55));
 	box[1].setOutlineColor(Color::White);
 	box[1].setOutlineThickness(5);
 
-	box[2].setPosition(450, 520);
+	box[2].setPosition(400, 510);
 	box[2].setFillColor(Color::Transparent);
-	box[2].setSize(Vector2f(200, 45));
+	box[2].setSize(Vector2f(230, 55));
 	box[2].setOutlineColor(Color::White);
 	box[2].setOutlineThickness(5);
 
