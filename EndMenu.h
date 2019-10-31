@@ -4,7 +4,7 @@
 using namespace sf;
 #define OBJECTS 3
 
-class Menu
+class EndMenu
 {
 private:
 	int selectItem;
@@ -12,10 +12,10 @@ private:
 	RectangleShape box[OBJECTS];
 	Text text[OBJECTS];
 public:
-	Menu();
-	void draw(RenderWindow &window);
+	EndMenu(int WIDTH, int HEIGHT); 
+	void draw(RenderWindow& window);//ve end menu len man hinh
 	void moveUp();
 	void moveDown();
-	int getChoose();
+	int getChoose(); //tra ve lua chon trong menu
 };
 
