@@ -1,82 +1,16 @@
-#include "Header.h"
-#include "cBall.h"
-#include <SFML/Graphics.hpp>
-
-using namespace sf;
+#include <sstream>
+#include <cstdlib>
+#include <iostream>
 using namespace std;
+#include <SFML/Graphics.hpp>
+using namespace sf;
+#include "Header.h"
+
+// This is where our game starts from
 int main()
 {
-	
-	int WIDTH = 1000;
-	int HEIGHT = 800;
-	/*
-	cBall ball(550, 400);
-	Event event;
-	Bat paddle1(10, HEIGHT / 2);
-	Bat paddle2(WIDTH - 20, HEIGHT / 2);
-	
-	RenderWindow window(VideoMode(WIDTH, HEIGHT), "Ping Pong Game");
-
-	while (window.isOpen())
-	{
-		while (window.pollEvent(event))
-		{
-			if (event.type == Event::Closed)
-			{
-				window.close(); //neu bam dau tat tren man hinh thi cua so tat
-			}
-		}
-		if (Keyboard::isKeyPressed(Keyboard::Up))
-			{
-			// move up...
-			paddle2.moveUp(0);
-			}
-		else if (Keyboard::isKeyPressed(Keyboard::Down))
-			{
-			// move down...
-			paddle2.moveDown(HEIGHT);
-			}
-		else if (Keyboard::isKeyPressed(Keyboard::Escape))
-			{
-			// quit...
-			// Someone closed the window- bye
-			window.close();
-			}
-		else if (Keyboard::isKeyPressed(Keyboard::W))
-			{
-			// move up
-			paddle1.moveUp(0);
-			}
-		else if (Keyboard::isKeyPressed(Keyboard::S))
-			{
-			// move up
-			paddle1.moveDown(HEIGHT);
-			}
-		ball.move(WIDTH, HEIGHT, paddle1, paddle2);
-		//paddle1.autoMove(0, HEIGHT, ball);
-		ball.updatePosition();
-		paddle1.update();
-		paddle2.update();
-		window.clear(Color(100, 80, 5, 255));
-		window.draw(paddle1.getShape());
-		window.draw(paddle2.getShape());
-		window.draw(ball.getShape());
-		window.display();
-	}*/
-	RenderWindow window(VideoMode(WIDTH, HEIGHT), "Ping Pong Game");
-	Font font;
-	font.loadFromFile("QuadBlack-Heavy.ttf");
-	Text text("hello",font);
-	
-	Menu menu(WIDTH, HEIGHT);
-	menu.draw(window);
-
-	window.clear(Color(150, 250, 100, 255));
-	window.draw(text);
-	window.display();
-	_getch();
-	//cWindow gameOver;
-	//gameOver.drawTheGameOverWindow(WIDTH, HEIGHT);
-	
+	Control play;
+	play.processGame();
 	return 0;
+
 }
